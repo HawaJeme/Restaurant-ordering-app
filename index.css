@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+}
+html{
+    width: 600px;
+    height: 1161px;
+    margin: 0 auto;
+}
+
+/* header */
+header{
+    width: 600px;
+    height: 167px;
+    color: white;
+    font-family: 'Smythe', cursive;
+    background-image:url(header-image.png)
+}
+
+.header-content{
+    padding: 31px 0 0 46px;
+}
+
+.header-content > h2{
+    font-size: 39px;
+}
+
+.header-content > p{
+    font-size: 22.4px;
+}
+
+/* main */
+
+main{
+padding: 70px 0 0 0;
+}
+
+.item-container{
+    display: flex;
+}
+
+.food-img{
+    height: 89px;
+    width: 70px;
+    font-size: 78px;
+}

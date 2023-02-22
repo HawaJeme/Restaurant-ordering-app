@@ -1,0 +1,20 @@
+{
+  "name": "restaurant-ordering-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuzey4/Restaurant-ordering-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kuzey4/Restaurant-ordering-app/issues"
+  },
+  "homepage": "https://github.com/kuzey4/Restaurant-ordering-app#readme"
+}
