@@ -10,10 +10,17 @@ function itemsRender(){
         ${item.emoji}
         </div>
         <div class="item-container-inner">
-            ${item.name}
-            ${item.ingredients}
-            ${item.price}
+            <div class="food-name">
+                ${item.name}
+            </div>
+            <div class="food-ingredians">
+                ${item.ingredients}
+            </div>
+            <div>
+                $${item.price}
+            </div>
         </div>
+            <i class="fa-thin fa-plus"></i>
     </div>
     `
     })

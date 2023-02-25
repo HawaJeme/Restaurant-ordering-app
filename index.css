@@ -7,6 +7,24 @@ html{
     margin: 0 auto;
 }
 
+/* typography */
+
+.header-content > h2{
+    font-size: 39px;
+}
+
+.header-content > p{
+    font-size: 22.4px;
+    padding-top: 10px;
+}
+
+.fa-plus{
+    font-size: 27px;
+    color: gray;
+    margin-right: 50px;
+    margin-left: auto;
+}
+
 /* header */
 header{
     width: 600px;
@@ -20,13 +38,6 @@ header{
     padding: 31px 0 0 46px;
 }
 
-.header-content > h2{
-    font-size: 39px;
-}
-
-.header-content > p{
-    font-size: 22.4px;
-}
 
 /* main */
 
@@ -36,10 +47,18 @@ padding: 70px 0 0 0;
 
 .item-container{
     display: flex;
+    gap: 40px;
+}
+
+.item-container-inner{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .food-img{
-    height: 89px;
     width: 70px;
-    font-size: 78px;
+    height: 89px;
+    font-size: 70px;
 }
