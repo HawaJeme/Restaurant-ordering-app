@@ -9,6 +9,10 @@ html{
 
 /* typography */
 
+i{
+    cursor: pointer;
+}
+
 .header-content > h2{
     font-size: 39px;
 }
@@ -21,8 +25,16 @@ html{
 .fa-plus{
     font-size: 27px;
     color: gray;
-    margin-right: 50px;
+    margin-right: 35px;
     margin-left: auto;
+    margin-top: 10px;
+    height: 30px;
+    width: 22px;
+}
+
+.fa-plus:hover{
+    color: rgb(206, 46, 25);
+    font-weight: 600;
 }
 
 /* header */
@@ -39,26 +51,50 @@ header{
 }
 
 
-/* main */
+/* main & content */
 
 main{
-padding: 70px 0 0 0;
+padding: 20px 0 0 0;
 }
 
 .item-container{
     display: flex;
+    margin: 40px auto 0 auto;
     gap: 40px;
+    width: 508px;
+    height: 140px;
+    border-bottom: 1px solid #D2D2D2;
 }
 
 .item-container-inner{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-bottom: 20px;
+    font-family: 'Smythe', cursive;
 }
 
 .food-img{
     width: 70px;
     height: 89px;
     font-size: 70px;
+}
+
+.food-name{
+    font-weight: 400;
+    font-size: 28px;
+}
+
+.food-price{
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.food-ingredients{
+    font-size: 16px;
+    color: #8B8B8B;
+}
+
+/* order div*/
+.orders-container{
+    padding: 30px;
 }

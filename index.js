@@ -1,10 +1,38 @@
 import { menuArray } from "./data.js";
 
-function itemsRender(){
-    let feedHTML = ``
+document.addEventListener('click', function(e){
+    if(e.target.dataset.id){
+        handleItemOrder(e.target.dataset.id)
+        document.getElementById('order-field').innerHTML += renderOrders()
+    }
+})
+
+function handleItemOrder(orderId){
+    const targetItemObj = menuArray.filter(function(item){
+        return item.id == orderId
+    })[0]
+    const targetItemName = targetItemObj.name
+    renderOrders(targetItemName)
+}
+function renderOrders(name){
+    let orders= ``
+    orders+=`
+    <div class="orders-container">
+        <h2> Your order </h2>
+        <div>
+        <h5>Order</h5>
+        ${name}
+        </div>
+    </div>
+    `
+    return orders
+}
+
+function renderMenu(){
+    let MainHTML = ``
     menuArray.forEach(item => {
 
-        feedHTML+=`
+        MainHTML+=`
     <div class="item-container">
         <div class="food-img">
         ${item.emoji}
@@ -13,22 +41,24 @@ function itemsRender(){
             <div class="food-name">
                 ${item.name}
             </div>
-            <div class="food-ingredians">
+            <div class="food-ingredients">
                 ${item.ingredients}
             </div>
-            <div>
+            <div class="food-price">
                 $${item.price}
             </div>
         </div>
-            <i class="fa-thin fa-plus"></i>
+            <i class="fa-thin fa-plus" data-id=${item.id}></i>
+    </div>
+    <div class="customers-order">
     </div>
     `
     })
-    return feedHTML
+    return MainHTML
 }
 
 function render(){
-    document.getElementById('section').innerHTML += itemsRender()
+    document.getElementById('section').innerHTML += renderMenu()
 }
 
 render()
