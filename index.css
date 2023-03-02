@@ -5,7 +5,9 @@ html{
     width: 600px;
     height: 1161px;
     margin: 0 auto;
+    position: relative;
 }
+
 
 /* typography */
 
@@ -112,7 +114,7 @@ padding: 20px 0 0 0;
     padding-bottom: 30px;
 }
 
-.purchase-btn{
+button {
     width: 100%;
     border: transparent;
     border-radius: 3px;
@@ -120,7 +122,7 @@ padding: 20px 0 0 0;
     background-color: #16DB99;
     color: rgb(255, 255, 255);
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .order-items{
@@ -154,18 +156,48 @@ padding: 20px 0 0 0;
     align-items: end;
 }
 
-/* PAYMENT CHECKOUT */
+/* PAYMENT CHECKOUT MODAL */
 
-#payment-checkout{
-display: flex;
-flex-direction: column;
-border: 1px solid;
-align-items: center;
-justify-content: center;
-gap: 25px;
+#payment-checkout-modal{
+    display: none;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 5px 5px 115px rgb(95, 95, 95);
 }
 
-#payment-checkout input{
-    display: block;
+.checkout-modal-inner form{
+    display:flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 40px;
+}
+
+input{
+    display: flex;
     padding: 15px;
+    width: 90%;
+    align-self: center;
+    text-align: center;
+}
+
+.modal-title{
+    text-align: center;
+    font-size: 24px;
+    padding-bottom: 20px;
+}
+
+.fixed{
+    position: absolute;
+    top: 280px;
+    right: 100px;
+}
+
+/* THANKS MODAL */
+
+.thanks-modal{
+    background-color: #ECFDF5;0
+    text-align: center;
 }

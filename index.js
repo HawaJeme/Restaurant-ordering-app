@@ -1,18 +1,21 @@
 import { menuArray } from "./data.js";
 
+const checkoutForm = document.getElementById("checkout-form")
+const modal = document.getElementById('payment-checkout-modal')
+const orderField = document.getElementById('order-field')
+
 document.addEventListener('click', function(e){
     if(e.target.dataset.add){
-        document.getElementById('order-field').style.display = 'flex';
+        orderField.style.display = 'flex';
         handleItemOrder(e.target.dataset.add)
         totalPrice()
-    }
-    if(e.target.dataset.remove){
+    } else if(e.target.dataset.remove){
         removeItem(e.target.dataset.remove)
+    } else if (e.target.dataset.purchasebtn){
+        cardPopup()
     }
-    document.getElementById('purchase-btn').addEventListener("click", ()=>{
-        console.log('clicked')
-    })
 })
+render()
 
 let purchaseList = []
 
@@ -30,15 +33,34 @@ function handleItemOrder(orderId){
     renderOrdersHTML()
 }
 
+function cardPopup(){
+    modal.style.display = "block"
+    modal.classList = "fixed"
+}
 
-function payment(){
-    
+checkoutForm.addEventListener('submit', (e)=>{
+    e.preventDefault()
+    const userName = document.getElementById('name').value
+    thanksMsg(userName)
+})
+
+function thanksMsg(name){
+    modal.style.display = 'none'
+    modal.classList.remove('fixed')
+
+    let thanksMsg = ``
+    thanksMsg = `
+    <div class="thanks-modal">
+    <h3>Thanks, ${name}! Your order is on its way!</h3>
+    </div>`
+
+    orderField.innerHTML = thanksMsg
 }
 
 function removeItem(itemId) {
     purchaseList.splice(itemId, 1)
     if(purchaseList.length == 0){
-    document.getElementById('order-field').style.display = 'none'
+        orderField.style.display = 'none'
     }
     renderOrdersHTML()
 }
@@ -82,7 +104,8 @@ function renderOrders(){
             <p>Total price: </p>
             <p class="order-price">$${totalPrice()}</p>
         </div>
-        <button class="purchase-btn" id="purchase-btn">Complete order</button>
+        <button class="purchase-btn" id="purchase-btn"
+        data-purchaseBtn="btn">Complete order</button>
     </div>
     `
     return ordersHTML
@@ -119,9 +142,9 @@ function renderMenu(){
 
 
 function render(){
-    document.getElementById('section').innerHTML = renderMenu()
+    document.getElementById('menu').innerHTML = renderMenu()
 }
-render()
+
 function renderOrdersHTML(){
-    document.getElementById('order-field').innerHTML = renderOrders()
+    orderField.innerHTML = renderOrders()
 }
