@@ -1,31 +1,91 @@
 import { menuArray } from "./data.js";
 
 document.addEventListener('click', function(e){
-    if(e.target.dataset.id){
-        handleItemOrder(e.target.dataset.id)
-        document.getElementById('order-field').innerHTML += renderOrders()
+    if(e.target.dataset.add){
+        document.getElementById('order-field').style.display = 'flex';
+        handleItemOrder(e.target.dataset.add)
+        totalPrice()
     }
+    if(e.target.dataset.remove){
+        removeItem(e.target.dataset.remove)
+    }
+    document.getElementById('purchase-btn').addEventListener("click", ()=>{
+        console.log('clicked')
+    })
 })
+
+let purchaseList = []
 
 function handleItemOrder(orderId){
     const targetItemObj = menuArray.filter(function(item){
         return item.id == orderId
     })[0]
     const targetItemName = targetItemObj.name
-    renderOrders(targetItemName)
+    const targetItemPrice = targetItemObj.price
+
+    purchaseList.push({
+        Name : targetItemName,
+        Price : targetItemPrice
+    })
+    renderOrdersHTML()
 }
-function renderOrders(name){
-    let orders= ``
-    orders+=`
-    <div class="orders-container">
-        <h2> Your order </h2>
-        <div>
-        <h5>Order</h5>
-        ${name}
+
+
+function payment(){
+    
+}
+
+function removeItem(itemId) {
+    purchaseList.splice(itemId, 1)
+    if(purchaseList.length == 0){
+    document.getElementById('order-field').style.display = 'none'
+    }
+    renderOrdersHTML()
+}
+
+function addItem(){
+
+    let newItem = ``
+
+    purchaseList.forEach((item) => {
+    let findIndex = purchaseList.indexOf(item)
+
+        newItem += `
+        <div class="order-items">
+            <p>${item.Name}</p>
+            <p class="remove-btn" data-remove=${findIndex}>remove</p>
+            <p class="order-price">$${item.Price}</p>
         </div>
+    `
+    })
+    return newItem
+}
+
+function totalPrice(){
+
+    let totalPriceNum = 0
+
+    for( let i=0; i< purchaseList.length; i++){
+    totalPriceNum += (purchaseList[i].Price)
+    }
+    return totalPriceNum
+}
+
+function renderOrders(){
+
+    let ordersHTML= ``
+    ordersHTML =`
+    <div class="orders-container" id="orders-container">
+        <p class="your-order-title"> Your order </p>
+        ${addItem()}
+        <div class="total-price">
+            <p>Total price: </p>
+            <p class="order-price">$${totalPrice()}</p>
+        </div>
+        <button class="purchase-btn" id="purchase-btn">Complete order</button>
     </div>
     `
-    return orders
+    return ordersHTML
 }
 
 function renderMenu(){
@@ -48,7 +108,7 @@ function renderMenu(){
                 $${item.price}
             </div>
         </div>
-            <i class="fa-thin fa-plus" data-id=${item.id}></i>
+            <i class="fa-thin fa-plus" data-add=${item.id}></i>
     </div>
     <div class="customers-order">
     </div>
@@ -57,8 +117,11 @@ function renderMenu(){
     return MainHTML
 }
 
-function render(){
-    document.getElementById('section').innerHTML += renderMenu()
-}
 
+function render(){
+    document.getElementById('section').innerHTML = renderMenu()
+}
 render()
+function renderOrdersHTML(){
+    document.getElementById('order-field').innerHTML = renderOrders()
+}
