@@ -8,20 +8,61 @@ html{
     position: relative;
 }
 
-
 /* typography */
 
-i{
-    cursor: pointer;
-}
-
-.header-content > h2{
+h2{
     font-size: 39px;
 }
 
 .header-content > p{
     font-size: 22.4px;
     padding-top: 10px;
+}
+
+.food-img{
+    width: 70px;
+    height: 89px;
+    font-size: 70px;
+}
+
+.food-name{
+    font-weight: 400;
+    font-size: 28px;
+}
+
+.food-price{
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.food-ingredients{
+    font-size: 16px;
+    color: #8B8B8B;
+}
+
+/* UTILITIES */
+
+.fixed{
+    position: absolute;
+    top: 500px;
+    right: 100px;
+}
+
+/* BUTTONS */
+
+button {
+    width: 100%;
+    border: transparent;
+    border-radius: 3px;
+    height: 60px;
+    background-color: #16DB99;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-size: 20px;
+}
+
+i{
+    cursor: pointer;
 }
 
 .fa-plus{
@@ -37,6 +78,17 @@ i{
 .fa-plus:hover{
     color: rgb(206, 46, 25);
     font-weight: 600;
+}
+
+.remove-btn{
+    font-family: 'Verdana';
+    cursor: pointer;
+    color: #D2D2D2;
+    font-size: 12px;
+}
+.remove-btn:hover{
+    color: darkred;
+    opacity: 0.5px;
 }
 
 /* header */
@@ -75,27 +127,6 @@ padding: 20px 0 0 0;
     font-family: 'Smythe', cursive;
 }
 
-.food-img{
-    width: 70px;
-    height: 89px;
-    font-size: 70px;
-}
-
-.food-name{
-    font-weight: 400;
-    font-size: 28px;
-}
-
-.food-price{
-    font-weight: 400;
-    font-size: 20px;
-}
-
-.food-ingredients{
-    font-size: 16px;
-    color: #8B8B8B;
-}
-
 /* order div*/
 
 #order-field{
@@ -114,17 +145,6 @@ padding: 20px 0 0 0;
     padding-bottom: 30px;
 }
 
-button {
-    width: 100%;
-    border: transparent;
-    border-radius: 3px;
-    height: 60px;
-    background-color: #16DB99;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    font-size: 20px;
-}
-
 .order-items{
     display: flex;
     padding-bottom: 10px;
@@ -135,17 +155,6 @@ button {
 .order-price{
     margin-left: auto;
     font-size: 20px;
-}
-
-.remove-btn{
-    font-family: 'Verdana';
-    cursor: pointer;
-    color: #D2D2D2;
-    font-size: 12px;
-}
-.remove-btn:hover{
-    color: darkred;
-    opacity: 0.5px;
 }
 
 .total-price{
@@ -188,14 +197,6 @@ input{
     font-size: 24px;
     padding-bottom: 20px;
 }
-
-.fixed{
-    position: absolute;
-    top: 500px;
-    right: 100px;
-}
-
-/* THANKS MODAL */
 
 .thanks-modal{
     color: #a32e10;
