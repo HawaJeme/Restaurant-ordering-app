@@ -40,8 +40,8 @@
                     <h4 class="modal-title">Enter card details</h4>
                     <input type="text" placeholder="Enter your name"
                     id="name" required/>
-                    <input type="number" placeholder="Enter card number" required/>
-                    <input type="number" placeholder="Enter CVV" required/>
+                    <input type="number" placeholder="Enter card number" max="9999999999" min="1000000000" required/>
+                    <input type="number" placeholder="Enter CVV" min="100" max="999" required/>
                     <button id="pay-btn">Pay</button>
                 </form>
             </div>

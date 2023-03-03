@@ -18,6 +18,7 @@ document.addEventListener('click', function(e){
 render()
 
 let purchaseList = []
+let finishedOrder = false
 
 function handleItemOrder(orderId){
     const targetItemObj = menuArray.filter(function(item){
@@ -25,72 +26,13 @@ function handleItemOrder(orderId){
     })[0]
     const targetItemName = targetItemObj.name
     const targetItemPrice = targetItemObj.price
-
+    if(!finishedOrder){
     purchaseList.push({
         Name : targetItemName,
         Price : targetItemPrice
     })
     renderOrdersHTML()
 }
-
-function cardPopup(){
-    modal.style.display = "block"
-    modal.classList = "fixed"
-}
-
-checkoutForm.addEventListener('submit', (e)=>{
-    e.preventDefault()
-    const userName = document.getElementById('name').value
-    thanksMsg(userName)
-})
-
-function thanksMsg(name){
-    modal.style.display = 'none'
-    modal.classList.remove('fixed')
-
-    let thanksMsg = ``
-    thanksMsg = `
-    <div class="thanks-modal">
-    <h3>Thanks, ${name}! Your order is on its way!</h3>
-    </div>`
-
-    orderField.innerHTML = thanksMsg
-}
-
-function removeItem(itemId) {
-    purchaseList.splice(itemId, 1)
-    if(purchaseList.length == 0){
-        orderField.style.display = 'none'
-    }
-    renderOrdersHTML()
-}
-
-function addItem(){
-
-    let newItem = ``
-
-    purchaseList.forEach((item) => {
-    let findIndex = purchaseList.indexOf(item)
-
-        newItem += `
-        <div class="order-items">
-            <p>${item.Name}</p>
-            <p class="remove-btn" data-remove=${findIndex}>remove</p>
-            <p class="order-price">$${item.Price}</p>
-        </div>
-    `
-    })
-    return newItem
-}
-
-function totalPrice(){
-
-    let totalPriceNum = 0
-
-    for( let i=0; i< purchaseList.length; i++){
-    totalPriceNum += (purchaseList[i].Price)
-    }
-    return totalPriceNum
 }
 
 function renderOrders(){
@@ -140,6 +82,71 @@ function renderMenu(){
     return MainHTML
 }
 
+function addItem(){
+    
+    let newItem = ``
+    
+    purchaseList.forEach((item) => {
+    let findIndex = purchaseList.indexOf(item)
+
+        newItem += `
+        <div class="order-items">
+            <p>${item.Name}</p>
+            <p class="remove-btn" data-remove=${findIndex}>remove</p>
+            <p class="order-price">$${item.Price}</p>
+        </div>
+    `
+})
+return newItem
+}
+
+function removeItem(itemId) {
+    purchaseList.splice(itemId, 1)
+    if(purchaseList.length == 0){
+        orderField.style.display = 'none'
+    }
+    renderOrdersHTML()
+}
+
+function totalPrice(){
+
+    let totalPriceNum = 0
+
+    for( let i=0; i< purchaseList.length; i++){
+        totalPriceNum += (purchaseList[i].Price)
+    }
+    return totalPriceNum
+}
+
+function cardPopup(){
+    finishedOrder = true
+    const purchaseBtn = document.getElementById('purchase-btn')
+    modal.style.display = "block"
+    modal.classList = "fixed"
+    purchaseBtn.style.cursor = "not-allowed"
+    const allAddBtns = document.getElementsByClassName('fa-plus')
+    for(let i in allAddBtns){
+        allAddBtns[i].style.cursor = "not-allowed"
+    }
+}
+
+checkoutForm.addEventListener('submit', (e)=>{
+    e.preventDefault()
+    const userName = document.getElementById('name').value
+    thanksMsg(userName)
+})
+
+function thanksMsg(name){
+    modal.style.display = 'none'
+
+    let thanksMsg = ``
+    thanksMsg = `
+    <div class="thanks-modal">
+    <h3>Thanks, ${name}! Your order is on its way!</h3>
+    </div>`
+
+    orderField.innerHTML = thanksMsg
+}
 
 function render(){
     document.getElementById('menu').innerHTML = renderMenu()

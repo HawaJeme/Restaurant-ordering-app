@@ -14,10 +14,24 @@ export const menuArray = [
         id: 1
     },
         {
-        name: "Beer",
-        ingredients: ["grain, hops, yeast, water"],
+        name: "Hot Dog",
+        ingredients: ["hot dog, ketchup, mayonnaise"],
         price: 12,
-        emoji: "🍺",
+        emoji: "🌭",
         id: 2
+    },
+    {
+        name: "French Fries",
+        ingredients: ["Russet potatoes, canola oil"],
+        price: 6,
+        emoji: "🍟",
+        id: 3
+    },
+    {
+        name: "Falafel",
+        ingredients: ["Green chile, chickpea flour, dried chickpeas"],
+        price: 10,
+        emoji: "🧆",
+        id: 4
     }
 ]
