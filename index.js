@@ -72,8 +72,8 @@ function cardPopup(){
     finishedOrder = true
     modal.style.display = "block"
     modal.classList = "fixed"
-    for(let i in allAddBtns){
-        allAddBtns[i].style.cursor = "not-allowed"
+    for(let i of allAddBtns){
+        i.style.cursor = "not-allowed"
     }
 }
 
@@ -90,8 +90,8 @@ checkoutForm.addEventListener('submit', (e)=>{
     </div>`
 
     orderField.innerHTML = thanksMsg
-    for(let i in allAddBtns){
-        allAddBtns[i].style.cursor = "pointer"
+    for(let i of allAddBtns){
+        i.style.cursor = "pointer"
     }
 })
 
